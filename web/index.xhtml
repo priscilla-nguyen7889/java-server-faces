@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Add Student</title>
+    </h:head>
+    <h:body>
+       
+        <fieldset>
+            <legend>Add Student</legend><!--https://www.geeksforgeeks.org/html-legend-tag/ -->
+                <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel id="lblId" value="Student Id">              
+                    </h:outputLabel>
+                    <h:inputText  id="txtId" required="true" requiredMessage="Id is required" value="#{studentBackingBean.student.id}">
+                        <f:validateLength  maximum="11"/>
+                    </h:inputText>
+                    <h:outputLabel id="lblName" value="Name">              
+                    </h:outputLabel>
+                    <h:inputText  id="txtName" required="true" requiredMessage="Name is required" value="#{studentBackingBean.student.name}">
+                        <f:validateLength  maximum="45"/>
+                    </h:inputText>
+                    <h:outputLabel id="lblProgram" value="Program:"></h:outputLabel>
+                    <h:selectOneRadio id="rdoProgram" required="true" requiredMessage="Please select Program" layout="pageDirection" value="#{studentBackingBean.student.program}">
+                        <f:selectItem itemValue="ECE" itemLabel="Early Childhood Educator"/>
+                        <f:selectItem itemValue="ITPA" itemLabel="IT Programmer Analyst"/>
+                        <f:selectItem itemValue="BAM" itemLabel="Business Admin-Marketing"/>
+                    </h:selectOneRadio>
+                    <h:outputLabel id="lblCourses" value="Courses"></h:outputLabel>
+                    <h:selectManyCheckbox id="ckbCourses" required="true" requiredMessage="Please select Courses" layout="pageDirection" value="#{studentBackingBean.courses}">
+                        <f:selectItem itemValue="PROG1234" itemLabel="Intro Programming"/>
+                        <f:selectItem itemValue="PROG1313" itemLabel="Advanced Java"/>
+                        <f:selectItem itemValue="PROG1391" itemLabel="PHP"/>
+                    </h:selectManyCheckbox>
+                   
+                   <h:commandButton id="cmdSubmit" value="Submit" action="#{studentBackingBean.AddStudent}">
+
+                    </h:commandButton>
+           
+                </h:panelGrid>
+               </h:form>
+
+            </fieldset>
+       
+    </h:body>
+</html>
+
